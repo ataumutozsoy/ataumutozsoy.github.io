@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ata Umut Özsoy — Bioinformatics & Software Engineering</title>
-  <meta name="description" content="Biyoinformatik ve yazılım mühendisliği: NGS veri analizi, popülasyon genetiği, LIMS/CTMS ve .NET tabanlı çözümler." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='120' fill='%231a1a1a'/%3E%3Ctext x='50%' y='54%' text-anchor='middle' font-family='Arial' font-size='92' fill='white'%3EAU%3C/text%3E%3C/svg%3E" />
+  <meta name="description" content="Biyoinformatik ve yazılım mühendisliği: NGS, popülasyon genetiği, LIMS ve .NET tabanlı çözümler." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='120' fill='%231a1a1a'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='Arial' font-size='92' fill='white'%3EAU%3C/text%3E%3C/svg%3E" />
 
   <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -15,15 +15,8 @@
         extend: {
           fontFamily: { sans: ["Inter","ui-sans-serif","system-ui","-apple-system","Segoe UI","Roboto","Helvetica Neue","Arial","Noto Sans","sans-serif"] },
           colors: {
-            link: {
-              DEFAULT: "#0a66c2", // bağlantı rengi (LinkedIn mavisine yakın)
-              hover: "#084e97"
-            },
-            ink: {
-              900: "#0b1220",
-              700: "#1f2937",
-              500: "#475569"
-            }
+            link: { DEFAULT: "#0a66c2", hover: "#084e97" },
+            ink: { 900: "#0b1220", 700: "#1f2937", 500: "#475569" }
           }
         }
       }
@@ -32,135 +25,143 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Schema.org (Person) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ata Umut Özsoy",
-    "jobTitle": "Bioinformatician & Software Engineer",
-    "url": "https://<kullanici-adiniz>.github.io/",
-    "affiliation": [{"@type":"Organization","name":"In Silico Bioinformatics"}],
-    "knowsAbout": ["NGS","Population genetics","LIMS",".NET","HPC"],
-    "sameAs": [
-      "https://github.com/<kullanici-adiniz>",
-      "https://www.linkedin.com/in/<profil>",
-      "https://orcid.org/<orcid>",
-      "https://scholar.google.com/citations?user=<scholar>",
-      "https://www.researchgate.net/profile/<rg>"
-    ]
-  }
-  </script>
   <style>
-    :focus-visible { outline: 3px solid #0a66c2; outline-offset: 2px; }
+    /* Masaüstünde tek ekranlık düzen; mobilde içerik taşabilir. */
+    @media (min-width: 768px){ body{height:100vh; overflow:hidden;} }
+    :focus-visible{ outline:3px solid #0a66c2; outline-offset:2px; }
   </style>
 </head>
 <body class="font-sans antialiased text-ink-900 bg-white">
-  <!-- Top Nav -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
-    <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between" aria-label="Ana menü">
-      <a href="/" class="font-semibold">Ata Umut Özsoy</a>
-      <ul class="hidden sm:flex items-center gap-6 text-[15px]">
-        <li><a class="text-link hover:text-link-hover" href="/">Home</a></li>
-        <li><a class="hover:text-ink-700" href="/posts/">Posts</a></li>
-        <li><a class="hover:text-ink-700" href="/publications/">Publications</a></li>
-        <li><a class="hover:text-ink-700" href="#contact">Contact</a></li>
-      </ul>
+  <!-- Header (56px) -->
+  <header class="h-14 sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+    <nav class="mx-auto max-w-6xl h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between" aria-label="Ana menü">
+      <a href="#" class="font-semibold">Ata Umut Özsoy</a>
+      <div class="flex items-center gap-4 text-[15px]">
+        <button id="btn-tr" class="px-2 py-1 rounded hover:bg-slate-100 font-medium">TR</button>
+        <span class="text-slate-300">|</span>
+        <button id="btn-en" class="px-2 py-1 rounded hover:bg-slate-100">EN</button>
+      </div>
     </nav>
   </header>
 
-  <main id="main" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10">
-    <!-- Header section (photo + summary) -->
-    <section class="grid lg:grid-cols-12 gap-10 items-start">
-      <!-- Left: profile card -->
-      <aside class="lg:col-span-4">
-        <div class="flex flex-col items-start gap-4">
-          <div class="w-40 h-40 rounded-full overflow-hidden border border-slate-200 bg-slate-100">
+  <!-- Main (tek ekranlık yükseklik) -->
+  <main class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 md:py-10 md:h-[calc(100vh-56px-44px)] md:overflow-hidden">
+    <section class="grid lg:grid-cols-12 gap-10 items-start md:h-full">
+      <!-- Left: profile -->
+      <aside class="lg:col-span-4 md:h-full">
+        <div class="flex flex-col items-start gap-4 md:justify-center md:h-full">
+          <div class="w-36 h-36 rounded-full overflow-hidden border border-slate-200 bg-slate-100">
             <img src="assets/profile.jpg" alt="Ata Umut Özsoy" class="w-full h-full object-cover" onerror="this.style.display='none'">
           </div>
           <div>
             <h1 class="text-2xl sm:text-3xl font-bold leading-tight">Ata Umut Özsoy</h1>
-            <p class="mt-1 text-ink-500">Bioinformatician & Software Engineer</p>
-            <p class="mt-1"><a class="text-link hover:text-link-hover" href="https://insilicomix.com.tr" target="_blank" rel="noopener">In Silico Bioinformatics</a> — Ankara, Türkiye</p>
+            <p class="mt-1 text-ink-500" data-i18n="title">Bioinformatician & Bioinformatic Software Engineer</p>
           </div>
-          <div class="flex items-center gap-2">
+          <div class="flex flex-wrap items-center gap-2">
             <a class="inline-flex items-center px-2.5 py-1 rounded-md border text-sm hover:bg-slate-50" href="https://github.com/<kullanici-adiniz>">GitHub</a>
             <a class="inline-flex items-center px-2.5 py-1 rounded-md border text-sm hover:bg-slate-50" href="https://www.linkedin.com/in/<profil>">LinkedIn</a>
             <a class="inline-flex items-center px-2.5 py-1 rounded-md border text-sm hover:bg-slate-50" href="https://orcid.org/<orcid>">ORCID</a>
             <a class="inline-flex items-center px-2.5 py-1 rounded-md border text-sm hover:bg-slate-50" href="https://scholar.google.com/citations?user=<scholar>">Scholar</a>
             <a class="inline-flex items-center px-2.5 py-1 rounded-md border text-sm hover:bg-slate-50" href="https://www.researchgate.net/profile/<rg>">RG</a>
           </div>
+          <div class="text-sm text-ink-700"><span data-i18n="emailLabel">E‑posta</span>: <a class="text-link hover:text-link-hover" href="mailto:ataumut7@gmail.com">ataumut7@gmail.com</a></div>
         </div>
       </aside>
 
-      <!-- Right: about text -->
-      <section class="lg:col-span-8">
-        <p class="text-[17px] leading-7 text-ink-700">Biyoinformatik ve yazılım arasında köprü kuran bir araştırmacıyım. Çalışmalarım; <span class="font-medium">NGS veri analizi</span> (WES/WGS/RNA‑seq), <span class="font-medium">popülasyon genetiği</span> (ADMIXTURE, PCA/DAPC, AMOVA), ve <span class="font-medium">klinik/araştırma LIMS</span> tasarımı üzerinde yoğunlaşır. Uygulama tarafında <span class="font-medium">.NET 8 / ASP.NET Core</span> ve <span class="font-medium">Angular</span> ile sürdürülebilir, test edilebilir servisler geliştiririm. HPC ortamlarında <span class="font-medium">SLURM</span> ile tekrarlanabilir pipeline'lar kurarım.</p>
-        <p class="mt-4 text-[17px] leading-7 text-ink-700">Bu sitede seçili bilimsel çalışmalarımı ve yazılım notlarımı paylaşıyorum. İçerikler çoğunlukla biyoinformatik yöntemler, veri mühendisliği ve yazılım mimarisiyle ilgilidir.</p>
-
-        <!-- Interests + Education -->
-        <div class="mt-8 grid md:grid-cols-2 gap-10">
-          <div>
-            <h2 class="text-xl font-semibold">İlgi Alanları</h2>
-            <ul class="mt-3 space-y-2 text-ink-700">
-              <li>NGS pipeline'ları (QC, hizalama, varyant çağırma, anotasyon)</li>
-              <li>Popülasyon genetiği ve filogenetik</li>
-              <li>Yüksek sıralı veri görselleştirme ve raporlama</li>
-              <li>.NET 8, CQRS, EF Core, REST API tasarımı</li>
-              <li>LIMS/CTMS, veri güvenliği (KVKK/GDPR) farkındalığı</li>
-              <li>HPC & SLURM üzerinde yeniden üretilebilirlik</li>
-            </ul>
-          </div>
-          <div>
-            <h2 class="text-xl font-semibold">Eğitim</h2>
-            <ul class="mt-3 space-y-3 text-ink-700">
-              <li>
-                <div class="font-medium">Yüksek Lisans (M.Sc.), Biyoloji</div>
-                <div class="text-sm text-ink-500">Hacettepe Üniversitesi, 2020</div>
-              </li>
-              <li>
-                <div class="font-medium">Lisans (B.Sc.), Biyoloji</div>
-                <div class="text-sm text-ink-500">Ankara Üniversitesi, 2019</div>
-              </li>
-            </ul>
-          </div>
+      <!-- Right: compact content -->
+      <section class="lg:col-span-8 md:h-full md:flex md:flex-col md:justify-center md:overflow-hidden">
+        <div class="space-y-4 md:max-h-[55%] md:overflow-hidden">
+          <p class="text-[17px] leading-7 text-ink-700" data-i18n="summary1"></p>
+          <p class="text-[17px] leading-7 text-ink-700" data-i18n="summary2"></p>
         </div>
 
-        <!-- Selected publications (optional) -->
-        <div class="mt-10">
-          <h2 class="text-xl font-semibold">Seçili Yayınlar</h2>
-          <ul class="mt-3 space-y-3 text-ink-700">
-            <li>
-              Özsoy A.U., <span class="italic">Genetic Resources and Crop Evolution</span>, 2024 — Triticum türlerinde genetik çeşitlilik çalışması. <a class="text-link hover:text-link-hover" href="https://link.springer.com/article/10.1007/s10722-024-02046-8" target="_blank" rel="noopener">makale</a>
-            </li>
-            <li>
-              Özsoy A.U., <span class="italic">Molecular Biology Reports</span> — Phaseolus vulgaris’te tuz stresi gen ifadesi (önceki çalışma).
-            </li>
-          </ul>
+        <div class="mt-6 grid md:grid-cols-2 gap-8 md:max-h-[40%] md:overflow-hidden">
+          <div>
+            <h2 class="text-lg font-semibold" data-i18n="interestsTitle"></h2>
+            <ul class="mt-2 space-y-2 text-ink-700 text-[15px]" id="interests"></ul>
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold" data-i18n="educationTitle"></h2>
+            <ul class="mt-2 space-y-3 text-ink-700 text-[15px]" id="edu"></ul>
+          </div>
         </div>
       </section>
     </section>
-
-    <!-- Contact -->
-    <section id="contact" class="mt-12 border-t pt-8 border-slate-200">
-      <h2 class="text-xl font-semibold">Contact</h2>
-      <p class="mt-2 text-ink-700">E-posta ile iletişim kurabilirsiniz. Gerekli görüldüğünde GitHub Issues üzerinden proje takibi yapılır.</p>
-      <ul class="mt-2 text-ink-700">
-        <li>E‑posta: <a class="text-link hover:text-link-hover" href="mailto:hello@example.com">hello@example.com</a></li>
-        <li>GitHub: <a class="text-link hover:text-link-hover" href="https://github.com/<kullanici-adiniz>">github.com/<kullanici-adiniz></a></li>
-        <li>Konum: Ankara, Türkiye</li>
-      </ul>
-    </section>
   </main>
 
-  <footer class="mt-12 border-t border-slate-200">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 text-sm text-ink-500 flex items-center justify-between">
+  <!-- Footer (44px) -->
+  <footer class="h-11 border-t border-slate-200">
+    <div class="mx-auto max-w-6xl h-full px-4 sm:px-6 lg:px-8 text-sm text-ink-500 flex items-center justify-between">
       <div>© <span id="year"></span> Ata Umut Özsoy</div>
-      <div class="hidden sm:block">TR / EN</div>
+      <div class="hidden sm:block"><span data-i18n="footerNote">Academic personal page</span></div>
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <script>
+    // Basit i18n sözlüğü
+    const i18n = {
+      tr: {
+        title: "Bioinformatikçi & Yazılım Mühendisi",
+        summary1: "Biyoinformatik ve yazılım arasında çalışan bir mühendisim. Odak alanlarım NGS veri analizi (WES/WGS/RNA‑seq), popülasyon genetiği ve LIMS/CTMS'dir.",
+        summary2: ".NET 8/ASP.NET Core ve Angular ile üretim ortamına hazır servisler geliştirir; HPC/SLURM üzerinde tekrarlanabilir iş akışları tasarlarım.",
+        interestsTitle: "İlgi Alanları",
+        educationTitle: "Eğitim",
+        emailLabel: "E‑posta",
+        interests: [
+          "NGS pipeline'ları (QC, hizalama, varyant, anotasyon)",
+          "Popülasyon genetiği, filogenetik",
+          ".NET 8, CQRS, EF Core, REST API",
+          "LIMS/CTMS, veri güvenliği (KVKK/GDPR)",
+          "HPC/SLURM, yeniden üretilebilirlik"
+        ],
+        education: [
+          { t: "Yüksek Lisans (M.Sc.), Biyoloji", s: "Hacettepe Üniversitesi, 2020" },
+          { t: "Lisans (B.Sc.), Biyoloji", s: "Ankara Üniversitesi, 2019" }
+        ]
+      },
+      en: {
+        title: "Bioinformatician & Software Engineer",
+        summary1: "I work at the intersection of bioinformatics and software engineering. My focus includes NGS data analysis (WES/WGS/RNA‑seq), population genetics, and LIMS/CTMS.",
+        summary2: "I build production‑ready services with .NET 8/ASP.NET Core and Angular, and design reproducible pipelines on HPC/SLURM.",
+        interestsTitle: "Interests",
+        educationTitle: "Education",
+        emailLabel: "Email",
+        footerNote: "Academic personal page",
+        interests: [
+          "NGS pipelines (QC, alignment, variant calling, annotation)",
+          "Population genetics, phylogenetics",
+          ".NET 8, CQRS, EF Core, REST APIs",
+          "LIMS/CTMS, data protection (GDPR)",
+          "HPC/SLURM, reproducibility"
+        ],
+        education: [
+          { t: "M.Sc. in Biology", s: "Hacettepe University, 2020" },
+          { t: "B.Sc. in Biology", s: "Ankara University, 2019" }
+        ]
+      }
+    };
+
+    const byKey = k => document.querySelectorAll(`[data-i18n="${k}"]`);
+    const renderList = (el, items) => { el.innerHTML = items.map(it => typeof it === 'string' ? `<li>${it}</li>` : `<li><div class='font-medium'>${it.t}</div><div class='text-ink-500 text-sm'>${it.s}</div></li>`).join(''); };
+
+    function setLang(lang){
+      const dict = i18n[lang];
+      for (const key of ['title','summary1','summary2','interestsTitle','educationTitle','emailLabel','footerNote']){
+        byKey(key).forEach(n => n.textContent = dict[key]);
+      }
+      renderList(document.getElementById('interests'), dict.interests);
+      renderList(document.getElementById('edu'), dict.education);
+      // Header toggle görselleştirme
+      document.getElementById('btn-tr').classList.toggle('font-medium', lang==='tr');
+      document.getElementById('btn-en').classList.toggle('font-medium', lang==='en');
+    }
+
+    document.getElementById('btn-tr').addEventListener('click', () => setLang('tr'));
+    document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
+
+    // Varsayılan dil: TR
+    setLang('tr');
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
